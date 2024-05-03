@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cricket Game</title>
+    <style>
+        *{margin: 0px;
+        padding: 1px 2px;}
+        #first{text-align: center;
+            background-image: url(home.jpg);
+            border: 2px solid;
+            border-radius: 8px;
+            background-size: cover;
+            background-repeat: none;
+            height: 98dvh;
+            width: 98dvw ;}
+        h1{color: white;}
+        button{color: red;
+            border: 3px solid pink;
+            border-radius: 10px;}
+        button:hover{height: 25px;
+            width: 55px;}
+    </style>
+</head>
+<body>
+    <div id="first">
+        <h1>Bat Ball Stump Game</h1>
+        <button onclick="
+        const Msg1='You have choosen Bat';
+        let num=Math.random()*3;
+        let choice;
+        if(num > 0 && num <= 1)
+        {
+            choice='Bat';
+            // console.log('computer choice is bat');
+        }
+        else if(num >1 && num <=2)
+        {
+            choice='Ball';
+            // console.log('computer choice is ball');
+        }
+        else
+        {
+            choice='Stump';
+            // console.log('computer choice is Stump');
+        }
+        const Msg2=`computer choice is ${choice}`;
+
+        let result;
+        if(choice==='Ball')
+        {
+            result='you won';
+        }
+        else if(choice==='Stump')
+        {
+            result='computer won';
+        }
+        else if(choice==='Bat')
+        {
+            result='It is tie';
+        }
+        alert(`you ave choosen bat. computer choice is ${choice} ${result}`);
+        ">Bat</button>
+        <button onclick="
+        const m1='You have choosen Ball';
+        let num2=Math.random()*3;
+        let ch;
+        if(num2 > 0 && num2 <= 1)
+        {
+            ch='Bat';
+        }
+        else if(num2 >1 && num2 <=2)
+        {
+            ch='Ball';
+        }
+        else
+        {
+            ch='Stump';
+        }
+        const m2=`computer choice is ${ch}`;
+        let def;
+        if(ch==='Stump')
+        {
+            def='you won';
+        }
+        else if(ch==='Bat')
+        {
+            def='computer won';
+        }
+        else if(ch==='Ball')
+        {
+            def='It is tie';
+        }
+        alert(`you have choosen Ball. computer choice is ${ch} ${def}`);
+        ">Ball</button>
+        <button onclick="
+        const m3='You have choosen Stump';
+        let num3=Math.random()*3;
+        let chh;
+        if(num3 > 0 && num3 <= 1)
+        {
+            chh='Bat';
+        }
+        else if(num3 >1 && num3 <=2)
+        {
+            chh='Ball';
+        }
+        else
+        {
+            chh='Stump';
+        }
+        const m4=`computer choice is ${chh}`;
+        let den;
+        if(chh==='Ball')
+        {
+            den='computer won';
+        }
+        else if(chh==='Bat')
+        {
+            den='you won';
+        }
+        else if(chh==='Stump')
+        {
+            den='It is tie';
+        }
+        alert(`you have choosen Stump. computer choice is ${chh} ${den}`);
+        ">Stump</button>
+    </div>
+</body>
+</html>
