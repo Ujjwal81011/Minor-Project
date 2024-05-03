@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture</title>
+    <style>
+        *{margin: 0;
+            padding: 0;}
+        nav{background-color: palegoldenrod;
+            display: flex;
+            color: white ;
+            justify-content: space-around;}
+        a{text-decoration: none;
+        padding: 5px;}
+        .D1{
+            height: 94dvh;
+            width: 100dvw;
+            background-image: url(./house.jpg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        label{color: white;}
+        .D2{
+           display: flex;
+           justify-content: center;
+           align-content: center;
+           flex-direction: column;
+           gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Contact</a>
+        <a href="#">About us</a>
+        <a href="P1.jpg">Sample</a>
+        <a href="P2.jpg">Cart</a>
+    </nav>
+    <div class="D1">
+        <div class="D2">
+            <label for="U">Username:</label>
+            <input type="text" placeholder="enter user id/email" id="U">
+            <label for="P">password:</label>
+            <input type="password" placeholder="enter password" id="P">
+            <input type="submit" style="border: 2px solid; border-radius: 15px; width: 50px; margin-left: 30%;">
+        </div>
+    </div>
+</body>
+</html>
