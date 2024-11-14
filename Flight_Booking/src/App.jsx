@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Topbar from "./Components/Topbar";
@@ -27,7 +28,9 @@ function Text() {
       <section id="plans">
         <Plans />
       </section>
-      <Banner />
+      <section id="banner">
+        <Banner />
+      </section>
       <section id="blogs">
         <Blog />
       </section>
