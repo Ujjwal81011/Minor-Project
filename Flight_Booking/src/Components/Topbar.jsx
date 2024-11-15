@@ -28,7 +28,7 @@ function Topbar() {
   }, []);
 
   const menuItems = [
-    { name: "Home", to: "#home" },
+    { name: "Home", to: "/" },
     { name: "Features", to: "#features" },
     { name: "About", to: "#about" },
     { name: "Plans", to: "#plans" },
