@@ -10,6 +10,6 @@ const routes = express.Router();
 routes
   .post("/register", registerUser)
   .get("/users", getUsers)
-  .get("/:id", deleteUser);
+  .get("/users/:id", deleteUser);
 
 export default routes;
