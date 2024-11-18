@@ -5,15 +5,15 @@ function FAQ() {
 
   const faqs = [
     {
-      question: "Why is flight ticket booking the cheapest on ixigo?",
+      question: "Why is flight ticket booking the cheapest on SkyTrip?",
       answer: (
         <div>
           <p>
-            ixigo directly searches multiple airline websites for the{" "}
+            SkyTrip directly searches multiple airline websites for the{" "}
             <strong>cheapest fares</strong>. Many airlines prefer to sell their
-            cheapest flight tickets on ixigo. Additionally, with its{" "}
+            cheapest flight tickets on SkyTrip. Additionally, with its{" "}
             <strong>exclusive offers and deals</strong>, including several bank
-            and partner offers, ixigo serves as the best platform to book{" "}
+            and partner offers, SkyTrip serves as the best platform to book{" "}
             <strong>cheap flights</strong>.
           </p>
           <p className="mt-2">Some of the ongoing flight deals include:</p>
@@ -25,7 +25,7 @@ function FAQ() {
           <p className="mt-2">
             Visit{" "}
             <a href="#" className="text-blue-500 hover:underline font-semibold">
-              ixigo flight offers
+              SkyTrip flight offers
             </a>{" "}
             for more.
           </p>
@@ -40,10 +40,10 @@ function FAQ() {
             Here's how you can book <strong>cheap flight tickets:</strong>
           </p>
           <ul className="list-disc ml-6 mt-2 text-gray-700">
-            <li>Book your flights from ixigo in advance to get the cheapest deals.</li>
+            <li>Book your flights from SkyTrip in advance to get the cheapest deals.</li>
             <li>Be flexible, and consider flying during off-peak hours.</li>
             <li>
-              Use ixigo's fare alerts to get notifications when ticket prices drop.
+              Use SkyTrip's fare alerts to get notifications when ticket prices drop.
             </li>
             <li>Consider stopover flights as they are often cheaper.</li>
             <li>
@@ -55,9 +55,9 @@ function FAQ() {
       ),
     },
     {
-      question: "What are the benefits of flight booking with ixigo?",
+      question: "What are the benefits of flight booking with SkyTrip?",
       answer:
-        "The benefits of flight booking with ixigo include cheap fares, easy ticket booking, real-time flight status tracking, exclusive flight ticket offers, flexible date options, and quick refunds.",
+        "The benefits of flight booking with SkyTrip include cheap fares, easy ticket booking, real-time flight status tracking, exclusive flight ticket offers, flexible date options, and quick refunds.",
     },
     {
       question:
@@ -68,7 +68,7 @@ function FAQ() {
     {
       question: "Can I modify or cancel my flight booking?",
       answer:
-        "Yes, you can modify or cancel your flight booking on ixigo with Assured and Assured Flex fares. Assured offers free cancellations on new bookings, while Assured Flex provides free cancellations or one-time free rescheduling, including date, airline, and route changes.",
+        "Yes, you can modify or cancel your flight booking on SkyTrip with Assured and Assured Flex fares. Assured offers free cancellations on new bookings, while Assured Flex provides free cancellations or one-time free rescheduling, including date, airline, and route changes.",
     },
     {
       question: "What documents do I need for my flight?",

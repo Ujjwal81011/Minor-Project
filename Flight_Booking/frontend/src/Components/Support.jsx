@@ -7,7 +7,7 @@ const Support = () => {
       {/* Header Section */}
       <div className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl font-extrabold mb-3 text-gray-800">
-          Welcome to Cleartrip Support
+          Welcome to SkyTrip
         </h1>
         <p className="text-gray-600 text-lg">
           Find answers to all your queries, call us at{" "}
