@@ -1,17 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-import Topbar from "./Components/Topbar";
-import Home from "./Components/Home";
-import Features from "./Components/Features";
-import About from "./Components/About";
-import Plans from "./Components/Plans";
-import Blog from "./Components/Blog";
-import SignIn from "./Components/SignIn";
-import Book from "./Components/Book";
-import Footer from "./Components/Footer";
-import Banner from "./Components/Banner";
-import Contact from "./Components/Contactus";
+import { About,Banner,Blog,Contact,Features,Footer,Home,Navbar,Plans,Signin,Topbar,Book,Hotel,Extra,Support} from "./Components/index.js";
 
 function Text() {
   return (
@@ -27,6 +16,9 @@ function Text() {
       </section>
       <section id="plans">
         <Plans />
+      </section>
+      <section id="Extra">
+        <Extra />
       </section>
       <section id="banner">
         <Banner />
@@ -45,9 +37,11 @@ function App() {
       <Topbar />
       <Routes>
         <Route path="/" element={<Text />} />
-        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signin" element={<Signin />} />
         <Route path="/book" element={<Book />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/Hotel" element={<Hotel />} />
+        <Route path="/Support" element={<Support />} />
       </Routes>
       <Footer />
     </>

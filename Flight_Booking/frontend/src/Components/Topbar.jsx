@@ -29,19 +29,17 @@ function Topbar() {
 
   const menuItems = [
     { name: "Home", to: "/" },
-    { name: "Features", to: "#features" },
-    { name: "About", to: "#about" },
-    { name: "Plans", to: "#plans" },
-    { name: "Banner", to: "#banner" },
-    { name: "Blogs", to: "#blogs" },
+    { name: "Book Ticket", to: "/Book" },
+    { name: "Hotel", to: "/Hotel" },
+    { name: "Support", to: "/Support" },
   ];
 
   return (
     <nav className="sm:px-4 md:px-8 lg:px-10 xl:px-12 relative flex flex-col md:flex-row justify-between items-center bg-white z-50">
       <div className="py-1 flex justify-between items-center w-full md:w-auto">
-        <a to="/">
+        <Link to="/">
           <img src={image} alt="Aero" className="h-14 w-24" />
-        </a>
+        </Link>
         <div className="md:hidden">
           <button
             onClick={toggleMenu}
