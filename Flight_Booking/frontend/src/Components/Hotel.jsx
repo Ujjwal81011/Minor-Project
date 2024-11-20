@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 const Booking = () => {
   const [formData, setFormData] = useState({
     name: "",
