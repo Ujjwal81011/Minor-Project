@@ -22,9 +22,9 @@ function Navbar() {
           </li>
         </ul>
         <div className="flex">
-          <Link to={"/signin"}>
+          <Link to={"/Login"}>
             <button className="rounded-2xl w-14 hover:font-bold">
-              Sign In
+              Login
             </button>
           </Link>
         </div>
