@@ -13,7 +13,7 @@ import Book from "./Book";
 import Hotel from "./Hotel";
 import Extra from "./Extra";
 import Support from "./Support";
-import Register from "./Register";
+import Login from "./Login";
 
 export {
   About,
@@ -31,5 +31,5 @@ export {
   Hotel,
   Extra,
   Support,
-  Register,
+  Login,
 };

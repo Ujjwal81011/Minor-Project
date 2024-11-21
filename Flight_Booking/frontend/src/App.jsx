@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { About,Banner,Blog,Contact,Features,Footer,Home,Navbar,Plans,Signin,Topbar,Book,Hotel,Extra,Support,Register} from "./Components/index.js";
+import { About,Banner,Blog,Contact,Features,Footer,Home,Navbar,Plans,Signin,Topbar,Book,Hotel,Extra,Support,Login} from "./Components/index.js";
 
 function Text() {
   return (
@@ -36,13 +36,13 @@ function App() {
       <Navbar />
       <Topbar />
       <Routes>
-        <Route path="/" element={<Text />} />
-        <Route path="/signin" element={<Signin />} />
+        <Route path="/Text" element={<Text />} />
+        <Route path="/" element={<Signin />} />
         <Route path="/book" element={<Book />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/Hotel" element={<Hotel />} />
         <Route path="/Support" element={<Support />} />
-        <Route path="/Register" element={<Register />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
       <Footer />
     </>

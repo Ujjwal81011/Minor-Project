@@ -70,7 +70,6 @@ function SignIn() {
     } catch (error) {
       console.log("Error :", error.message);
       toast.error("User Already Exists!");
-
       const errorData = "User Already Exists!!";
       setError(errorData.errors || { general: error.message });
     } finally {
@@ -79,14 +78,14 @@ function SignIn() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-blue-50 p-4 sm:p-6 lg:p-8">
+    <div className="flex flex-col items-center justify-center bg-blue-50 p-6 sm:p-8 lg:p-10">
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-6 sm:mb-8 text-blue-700">
-        Sign In
+        Sign Up
       </h1>
 
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-sm sm:max-w-md space-y-4 sm:space-y-6 bg-white p-6 sm:p-8 rounded-lg shadow-lg"
+        className="w-full max-w-md sm:max-w-lg space-y-4 sm:space-y-6 bg-white p-6 sm:p-8 rounded-lg shadow-lg"
       >
         <div className="flex flex-col">
           <label
@@ -101,7 +100,7 @@ function SignIn() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="bg-gray-100 focus:bg-white focus:outline-none focus:ring focus:border-blue-500 transition duration-200 border border-gray-300 rounded-lg p-2 sm:p-3"
+            className="bg-gray-100 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 border border-gray-300 rounded-lg p-2 sm:p-3"
             placeholder="Name"
           />
           {error.name && (
@@ -122,7 +121,7 @@ function SignIn() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="bg-gray-100 focus:bg-white focus:outline-none focus:ring focus:border-blue-500 transition duration-200 border border-gray-300 rounded-lg p-2 sm:p-3"
+            className="bg-gray-100 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 border border-gray-300 rounded-lg p-2 sm:p-3"
             placeholder="Enter your email"
           />
           {error.email && (
@@ -143,7 +142,7 @@ function SignIn() {
             name="password"
             value={formData.password}
             onChange={handleChange}
-            className="bg-gray-100 focus:bg-white focus:outline-none focus:ring focus:border-blue-500 transition duration-200 border border-gray-300 rounded-lg p-2 sm:p-3"
+            className="bg-gray-100 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 border border-gray-300 rounded-lg p-2 sm:p-3"
             placeholder="Enter your password"
           />
           {error.password && (
@@ -161,15 +160,20 @@ function SignIn() {
           className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 sm:py-3 rounded-full transition duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4 sm:mt-6"
           disabled={loading}
         >
-          {loading ? "Signing In..." : "Sign In"}
+          {loading ? "Signing In..." : "Sign UP"}
         </button>
 
-        <a
-          href="/Register"
-          className="text-blue-500 text-center flex items-center justify-center mt-4 hover:underline"
-        >
-          Register now
-        </a>
+        <div className="text-center mt-4">
+          <p className="text-sm text-gray-700">
+            Already have an account?{" "}
+            <a
+              href="/Login"
+              className="text-blue-500 hover:underline font-semibold"
+            >
+              Login
+            </a>
+          </p>
+        </div>
       </form>
     </div>
   );
