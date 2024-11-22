@@ -39,7 +39,7 @@ function Blog() {
     <div className='flex flex-col items-center bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300'>
       <img src={usa} alt="USA" className='w-full h-64 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300' />
       <h1 className='text-slate-700 text-xl font-bold mt-4'>USA</h1>
-      <p className='text-slate-500 text-center mt-2 px-4'>Los Angeles International Airport (LAX) is a major U.S. gateway, providing world-class amenities, vast airline choices, and global connectivity.</p>
+      <p className='text-slate-500 text-center mt-2 px-4'>Los Angeles International Airport is a major U.S. gateway, providing world-class amenities, vast airline choices, and global connectivity.</p>
       <span className='text-blue-600 text-lg font-semibold mt-4'>Top Customers from USA</span>
       <h1 className='text-slate-800 text-md mt-2 font-semibold'>Donald Trump</h1>
     </div>
