@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <h1>Hello Mishra</h1>
+      <h1 className=''>Hello Mishra</h1>
     </>
   )
 }
