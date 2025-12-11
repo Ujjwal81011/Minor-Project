@@ -1,32 +1,28 @@
 import express from "express";
-import dotenv from "dotenv";
+import authRoutes from "./routes/auth.routes.js";
+import contactRoutes from "./routes/contact.routes.js";
+import bookingRoutes from "./routes/booking.routes.js";
 import cors from "cors";
-import connectDB from "./config/database.js";
-import bookingRoutes from "./routes/Booking.routes.js";
-import userRoutes from "./routes/User.routes.js";
-import contactRoutes from "./routes/Contact.routes.js";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 4000;
 app.use(express.json());
-connectDB();
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
   })
-);
+);  
+app.use(cookieParser());
 
-app.use("/api/v1/", bookingRoutes);
-app.use("/api/v1/", userRoutes);
-app.use("/api/v1/", contactRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/queries", contactRoutes);
+app.use("/api/bookings", bookingRoutes);
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    msg: "Api is running.....",
-  });
-});
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Serve is Running on http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });

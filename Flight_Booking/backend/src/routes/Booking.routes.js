@@ -1,15 +1,31 @@
-import express from "express";
+import { Router } from "express";
 import {
-  BookingAdded,
+  createBooking,
+  getMyBookings,
+  getAllBookings,
+  getBookingById,
   deleteBooking,
-  getBookings,
-} from "../controllers/Booking.controller.js";
+  getFare,
+  getAvailableRoutes,
+} from "../controllers/booking.controller.js";
+import {
+  protect,
+  adminOnly,
+} from "../middlewares/authMiddleware.middleware.js";
 
-const router = express.Router();
+const router = Router();
 
-router
-  .post("/booking", BookingAdded)
-  .get("/booking", getBookings)
-  .get("/booking/:id", deleteBooking);
+// Public
+router.get("/flight/routes", getAvailableRoutes);
+router.post("/flight/fare", getFare);
+
+// User Routes
+router.post("/flight", protect, createBooking);
+router.get("/flight/my", protect, getMyBookings);
+router.get("/flight/:id", protect, getBookingById);
+router.delete("/flight/:id", protect, deleteBooking);
+
+// Admin Routes
+router.get("/flight/all", protect, adminOnly, getAllBookings);
 
 export default router;

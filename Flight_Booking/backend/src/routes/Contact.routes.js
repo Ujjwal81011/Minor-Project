@@ -1,14 +1,20 @@
-import express from "express";
+import { Router } from "express";
 import {
-  addMessage,
-  getMessages,
-  getMessageById,
-} from "../controllers/Contact.controller.js";
+  createContact,
+  getAllContacts,
+  getUserQueries,
+} from "../controllers/constact.controller.js";
+import {
+  protect,
+  adminOnly,
+} from "../middlewares/authMiddleware.middleware.js";
 
-const router = express.Router();
+const router = Router();
 
-router.post("/contacts", addMessage);
-router.get("/contacts", getMessages);
-router.get("/contacts/:id", getMessageById);
+router.post("/", createContact);
+
+router.get("/my", protect, getUserQueries);
+
+router.get("/all", protect, adminOnly, getAllContacts);
 
 export default router;

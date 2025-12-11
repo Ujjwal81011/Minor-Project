@@ -5,10 +5,9 @@ import Contact from "./Contactus";
 import Features from "./Features";
 import Footer from "./Footer";
 import Home from "./Home";
-import Navbar from "./Navbar";
 import Plans from "./Plans";
 import Signin from "./SignIn";
-import Topbar from "./Topbar";
+import Nav from "./Nav";
 import Book from "./Book";
 import Hotel from "./Hotel";
 import Extra from "./Extra";
@@ -23,10 +22,9 @@ export {
   Features,
   Footer,
   Home,
-  Navbar,
   Plans,
   Signin,
-  Topbar,
+  Nav,
   Book,
   Hotel,
   Extra,

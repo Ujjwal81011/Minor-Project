@@ -1,179 +1,240 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
+
+const passwordWorker = new Worker(
+  new URL("../utils/passwordWorker.js", import.meta.url)
+);
 
 function SignIn() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, error, isAuthenticated, user } = useSelector(
+    (state) => state.auth
+  );
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
+    error: "",
+    showPassword: false,
   });
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({});
+  const [passwordFeedback, setPasswordFeedback] = useState("");
 
-  const resetForm = () => {
-    setFormData({
-      name: "",
-      email: "",
-      password: "",
-    });
-    setError({});
-  };
+  // Worker setup
+  useEffect(() => {
+    passwordWorker.onmessage = (e) => {
+      const { message } = e.data;
+      setPasswordFeedback(message);
+    };
+    return () => passwordWorker.terminate();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+      error: "",
+    }));
+
+    if (name === "password") {
+      passwordWorker.postMessage({
+        type: "validatePassword",
+        payload: { password: value, minLength: 6 },
+      });
+    }
   };
 
   const validateForm = () => {
-    let formValid = true;
-    let errors = {};
+    const { name, email, password } = formData;
+    let errorMsg = "";
 
-    if (!formData.name) {
-      formValid = false;
-      errors.name = "Name is required";
-    }
-    if (!formData.email) {
-      formValid = false;
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      formValid = false;
-      errors.email = "Email is invalid";
-    }
-    if (!formData.password) {
-      formValid = false;
-      errors.password = "Password is required";
-    } else if (formData.password.length < 6) {
-      formValid = false;
-      errors.password = "Password must be at least 6 characters";
-    }
+    if (!name.trim()) errorMsg = "Name is required.";
+    else if (!email.trim()) errorMsg = "Email is required.";
+    else if (!/\S+@\S+\.\S+/.test(email))
+      errorMsg = "Please enter a valid email.";
+    else if (!password.trim()) errorMsg = "Password is required.";
 
-    setError(errors);
-    return formValid;
+    if (errorMsg) {
+      setFormData((prev) => ({ ...prev, error: errorMsg }));
+      return false;
+    }
+    return true;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!validateForm()) {
-      return;
-    }
-    setLoading(true);
-    try {
-      console.log("Submit :", formData);
-      const response = await axios.post("/api/v1/register", formData);
-      toast.success("User registered successfully!");
-      resetForm();
-    } catch (error) {
-      console.log("Error :", error.message);
-      toast.error("User Already Exists!");
-      const errorData = "User Already Exists!!";
-      setError(errorData.errors || { general: error.message });
-    } finally {
-      setLoading(false);
-    }
+    if (!validateForm()) return;
+
+    const { name, email, password } = formData;
+
+    dispatch(registerUser({ name, email, password }))
+      .unwrap()
+      .then(() => {
+        toast.success("User registered successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          password: "",
+          error: "",
+          showPassword: false,
+        });
+        setPasswordFeedback("");
+        navigate("/login"); // ✅ Corrected from navigator() → navigate()
+      })
+      .catch((err) => {
+        console.error("Registration Error:", err);
+        const message =
+          typeof err === "string" ? err : err?.message || "Registration failed";
+        toast.error(message);
+        setFormData((prev) => ({ ...prev, error: message }));
+      });
   };
+
+  const safeErrorText = (() => {
+    const err = error || formData.error;
+    if (!err) return "";
+    if (typeof err === "string") return err;
+    if (err instanceof Error) return err.message;
+    if (typeof err === "object" && err?.message) return err.message;
+    return String(err);
+  })();
 
   return (
-    <div className="flex flex-col items-center justify-center bg-blue-50 p-6 sm:p-8 lg:p-10">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-6 sm:mb-8 text-blue-700">
+    <div className="flex flex-col items-center justify-center bg-blue-50 min-h-screen px-4 sm:px-6">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-6 text-blue-700">
         Sign Up
       </h1>
 
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md sm:max-w-lg space-y-4 sm:space-y-6 bg-white p-6 sm:p-8 rounded-lg shadow-lg"
+        className="w-full max-w-sm sm:max-w-md bg-white p-6 sm:p-8 rounded-lg shadow-lg space-y-5"
       >
-        <div className="flex flex-col">
+        {/* Name */}
+        <div>
           <label
             htmlFor="name"
-            className="mb-2 text-sm sm:text-base md:text-lg text-gray-700"
+            className="block mb-2 text-sm font-medium text-gray-700"
           >
             Name
           </label>
           <input
-            type="text"
             id="name"
             name="name"
+            type="text"
             value={formData.name}
             onChange={handleChange}
-            className="bg-gray-100 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 border border-gray-300 rounded-lg p-2 sm:p-3"
-            placeholder="Name"
+            autoComplete="name"
+            placeholder="Enter your name"
+            className="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none"
           />
-          {error.name && (
-            <span className="text-red-500 text-sm">{error.name}</span>
-          )}
         </div>
 
-        <div className="flex flex-col">
+        {/* Email */}
+        <div>
           <label
             htmlFor="email"
-            className="mb-2 text-sm sm:text-base md:text-lg text-gray-700"
+            className="block mb-2 text-sm font-medium text-gray-700"
           >
             Email
           </label>
           <input
-            type="text"
             id="email"
             name="email"
+            type="email"
             value={formData.email}
             onChange={handleChange}
-            className="bg-gray-100 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 border border-gray-300 rounded-lg p-2 sm:p-3"
+            autoComplete="email"
             placeholder="Enter your email"
+            className="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none"
           />
-          {error.email && (
-            <span className="text-red-500 text-sm">{error.email}</span>
-          )}
         </div>
 
-        <div className="flex flex-col">
+        {/* Password */}
+        <div>
           <label
             htmlFor="password"
-            className="mb-2 text-sm sm:text-base md:text-lg text-gray-700"
+            className="block mb-2 text-sm font-medium text-gray-700"
           >
             Password
           </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            className="bg-gray-100 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 border border-gray-300 rounded-lg p-2 sm:p-3"
-            placeholder="Enter your password"
-          />
-          {error.password && (
-            <span className="text-red-500 text-sm">{error.password}</span>
+          <div className="relative">
+            <input
+              id="password"
+              name="password"
+              type={formData.showPassword ? "text" : "password"}
+              value={formData.password}
+              onChange={handleChange}
+              autoComplete="new-password"
+              placeholder="Enter your password"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none pr-16"
+            />
+            <button
+              type="button"
+              onClick={() =>
+                setFormData((prev) => ({
+                  ...prev,
+                  showPassword: !prev.showPassword,
+                }))
+              }
+              className="absolute inset-y-0 right-3 text-sm text-blue-600 hover:text-blue-800 font-medium"
+            >
+              {formData.showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
+
+          {passwordFeedback && (
+            <p
+              className={`mt-2 text-sm ${
+                passwordFeedback.includes("strong")
+                  ? "text-green-600"
+                  : "text-red-500"
+              }`}
+            >
+              {passwordFeedback}
+            </p>
           )}
         </div>
 
-        {error.general && (
-          <div className="text-red-500 text-sm text-center">
-            {error.general}
-          </div>
+        {/* Error Message */}
+        {safeErrorText && (
+          <p className="text-center text-red-500 text-sm">{safeErrorText}</p>
         )}
 
+        {/* Submit Button */}
         <button
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 sm:py-3 rounded-full transition duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4 sm:mt-6"
+          type="submit"
           disabled={loading}
+          className={`w-full py-3 text-white font-semibold rounded-full transition duration-200 focus:ring-2 focus:ring-blue-500 ${
+            loading
+              ? "bg-blue-400 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700"
+          }`}
         >
-          {loading ? "Signing In..." : "Sign UP"}
+          {loading ? "Registering..." : "Sign Up"}
         </button>
 
-        <div className="text-center mt-4">
-          <p className="text-sm text-gray-700">
-            Already have an account?{" "}
-            <a
-              href="/Login"
-              className="text-blue-500 hover:underline font-semibold"
-            >
-              Login
-            </a>
+        {/* Redirect */}
+        <p className="text-center text-sm text-gray-700">
+          Already have an account?{" "}
+          <a
+            href="/login"
+            className="text-blue-600 hover:underline font-semibold"
+          >
+            Login
+          </a>
+        </p>
+
+        {isAuthenticated && (
+          <p className="text-green-600 text-sm text-center mt-2">
+            Welcome, {user}!
           </p>
-        </div>
+        )}
       </form>
     </div>
   );

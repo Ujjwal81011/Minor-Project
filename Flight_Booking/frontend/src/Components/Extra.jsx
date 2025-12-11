@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 function FAQ() {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -9,25 +11,25 @@ function FAQ() {
       answer: (
         <div>
           <p>
-            SkyTrip directly searches multiple airline websites for the{" "}
-            <strong>cheapest fares</strong>. Many airlines prefer to sell their
-            cheapest flight tickets on SkyTrip. Additionally, with its{" "}
-            <strong>exclusive offers and deals</strong>, including several bank
-            and partner offers, SkyTrip serves as the best platform to book{" "}
-            <strong>cheap flights</strong>.
+            SkyTrip directly searches multiple airline websites for{" "}
+            <strong>the cheapest fares</strong>. Many airlines prefer selling
+            their lowest fares here, and our{" "}
+            <strong>exclusive partner deals</strong> make it even better.
           </p>
-          <p className="mt-2">Some of the ongoing flight deals include:</p>
-          <ul className="list-decimal ml-6 mt-2 text-gray-700">
-            <li>Flat 10% Off up to Rs.1000 on flights with OneCard Credit Card.</li>
-            <li>Flat Rs. 555 Off on Flight Bookings via MobiKwik wallet.</li>
-            <li>Get up to Rs. 5000 Off on flights with HDFC bank EasyEMI on Credit Cards.</li>
+          <ul className="list-decimal ml-6 mt-2 space-y-1 text-gray-700">
+            <li>Flat 10% Off up to ₹1000 with OneCard Credit Card.</li>
+            <li>₹555 Off on bookings via MobiKwik wallet.</li>
+            <li>Up to ₹5000 Off on HDFC EasyEMI payments.</li>
           </ul>
           <p className="mt-2">
             Visit{" "}
-            <a href="#" className="text-blue-500 hover:underline font-semibold">
+            <a
+              href="#"
+              className="text-blue-600 font-semibold hover:underline"
+            >
               SkyTrip flight offers
             </a>{" "}
-            for more.
+            for current deals.
           </p>
         </div>
       ),
@@ -35,45 +37,36 @@ function FAQ() {
     {
       question: "How do I book cheap flight tickets?",
       answer: (
-        <div>
-          <p className="mt-2">
-            Here's how you can book <strong>cheap flight tickets:</strong>
-          </p>
-          <ul className="list-disc ml-6 mt-2 text-gray-700">
-            <li>Book your flights from SkyTrip in advance to get the cheapest deals.</li>
-            <li>Be flexible, and consider flying during off-peak hours.</li>
-            <li>
-              Use SkyTrip's fare alerts to get notifications when ticket prices drop.
-            </li>
-            <li>Consider stopover flights as they are often cheaper.</li>
-            <li>
-              Avoid traveling on weekends, as air tickets are higher during this time.
-            </li>
-            <li>Try budget airlines like Indigo, Air India for affordable flights.</li>
-          </ul>
-        </div>
+        <ul className="list-disc ml-6 mt-2 space-y-1 text-gray-700">
+          <li>Book early for better fares.</li>
+          <li>Travel mid-week or off-peak for discounts.</li>
+          <li>Enable fare alerts for price drop notifications.</li>
+          <li>Choose stopovers for cheaper routes.</li>
+          <li>Avoid weekends — fares surge then.</li>
+          <li>Try budget airlines like Indigo or Air India Express.</li>
+        </ul>
       ),
     },
     {
       question: "What are the benefits of flight booking with SkyTrip?",
       answer:
-        "The benefits of flight booking with SkyTrip include cheap fares, easy ticket booking, real-time flight status tracking, exclusive flight ticket offers, flexible date options, and quick refunds.",
+        "Cheap fares, fast booking, live flight tracking, exclusive deals, date flexibility, and quick refunds make SkyTrip your best choice.",
     },
     {
       question:
-        "How do you make flexible online flight ticket booking with changeable dates?",
+        "How can I make a flexible online flight booking with changeable dates?",
       answer:
-        "Select your preferred flight and opt for 'Assured Flex' on the 'Review Flight' page to make flexible online flight ticket bookings with changeable dates. This will allow you to modify your travel dates.",
+        "Choose ‘Assured Flex’ on the Review Flight page. It allows you to modify travel dates without penalty.",
     },
     {
       question: "Can I modify or cancel my flight booking?",
       answer:
-        "Yes, you can modify or cancel your flight booking on SkyTrip with Assured and Assured Flex fares. Assured offers free cancellations on new bookings, while Assured Flex provides free cancellations or one-time free rescheduling, including date, airline, and route changes.",
+        "Yes. SkyTrip offers ‘Assured’ for free cancellations and ‘Assured Flex’ for one-time rescheduling (date, airline, or route).",
     },
     {
       question: "What documents do I need for my flight?",
       answer:
-        "You'll need a valid photo ID, such as a passport, Aadhaar, or driver's license, and your flight ticket or e-ticket. For international flights, a valid passport and visa are required.",
+        "You’ll need a valid photo ID (Aadhaar, Passport, or DL) and your e-ticket. International travel requires a valid passport and visa.",
     },
   ];
 
@@ -82,41 +75,85 @@ function FAQ() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto bg-gradient-to-br from-white via-gray-100 to-gray-50 p-6 md:p-10 rounded-lg shadow-lg mt-10 md:mt-14 my-4">
-      <h1 className="text-3xl font-extrabold text-gray-800 text-center mb-10 md:text-4xl lg:text-5xl">
-        Frequently Asked Questions
-      </h1>
-      <div className="space-y-6">
-        {faqs.map((faq, index) => (
-          <div
-            key={index}
-            className="border-b border-gray-300 pb-4 last:border-b-0 transition-all duration-300"
-          >
-            <button
-              onClick={() => toggleFAQ(index)}
-              className="flex justify-between items-center w-full text-left text-gray-800 font-medium text-lg md:text-xl py-3 hover:text-blue-600 focus:outline-none focus:ring focus:ring-blue-300 rounded-lg"
-            >
-              <span>{faq.question}</span>
-              <span
-                className={`transform transition-transform ${
-                  activeIndex === index ? "rotate-180" : ""
-                }`}
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-16 py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden">
+      {/* Background Decorative Lights */}
+      <motion.div
+        className="absolute top-10 left-20 w-64 h-64 bg-blue-200 rounded-full blur-3xl opacity-40"
+        animate={{ y: [0, -30, 0], opacity: [0.4, 0.6, 0.4] }}
+        transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-10 right-20 w-80 h-80 bg-cyan-300 rounded-full blur-3xl opacity-40"
+        animate={{ y: [0, 40, 0], opacity: [0.6, 0.3, 0.6] }}
+        transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+      />
+
+      {/* FAQ Container */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 w-full max-w-5xl bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200 p-8 md:p-12"
+      >
+        <div className="text-center mb-10">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-blue-800 mb-3">
+            Frequently Asked Questions
+          </h1>
+          <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">
+            Find quick answers to common queries about flights, fares, and
+            flexible booking options on SkyTrip.
+          </p>
+        </div>
+
+        {/* FAQ List */}
+        <div className="divide-y divide-gray-300">
+          {faqs.map((faq, index) => (
+            <div key={index} className="py-4">
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full flex justify-between items-center text-left font-semibold text-gray-800 hover:text-blue-700 focus:outline-none transition-colors duration-200"
               >
-                ▼
-              </span>
-            </button>
-            {activeIndex === index && (
-              <div className="text-gray-700 mt-3 space-y-2 text-sm md:text-base animate-fadeIn">
-                {faq.answer}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-      <button className="block mx-auto mt-10 px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold text-sm md:text-base rounded-full hover:shadow-lg hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring focus:ring-blue-300">
-        View More
-      </button>
-    </div>
+                <span className="text-lg md:text-xl">{faq.question}</span>
+                <motion.span
+                  animate={{
+                    rotate: activeIndex === index ? 180 : 0,
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className="w-6 h-6 text-blue-500" />
+                </motion.span>
+              </button>
+
+              <AnimatePresence>
+                {activeIndex === index && (
+                  <motion.div
+                    key="content"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="mt-3 text-gray-700 text-sm md:text-base leading-relaxed overflow-hidden"
+                  >
+                    {faq.answer}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="flex justify-center mt-10">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold shadow-md hover:shadow-lg transition duration-200"
+          >
+            View More FAQs
+          </motion.button>
+        </div>
+      </motion.div>
+    </section>
   );
 }
 

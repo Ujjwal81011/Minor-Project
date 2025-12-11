@@ -6,30 +6,33 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <div className="bg-slate-200">
-      <div className="flex justify-between items-center sm:mx-6 lg:mx-12 py-3">
-        <div>
-          <SiConsul />
+    <nav className="bg-slate-200 shadow-sm">
+      <div className="flex items-center justify-between px-6 lg:px-12 py-3">
+        {/* Logo / Brand */}
+        <div className="text-xl text-gray-800">
+          <SiConsul className="text-2xl" />
         </div>
-        <ul className="flex gap-4">
-          <li className="flex">
-            {" "}
-            <BsPhoneVibrate className="mt-1 mx-2" /> Support
+
+        {/* Center Menu */}
+        <ul className="flex items-center gap-6 text-gray-700 text-sm">
+          <li className="flex items-center gap-2 hover:text-red-500 cursor-pointer transition-colors duration-200">
+            <BsPhoneVibrate className="text-lg" />
+            Support
           </li>
-          <li className="flex">
-            {" "}
-            <AiOutlineGlobal className="mt-1 mx-2" /> Languages
+          <li className="flex items-center gap-2 hover:text-red-500 cursor-pointer transition-colors duration-200">
+            <AiOutlineGlobal className="text-lg" />
+            Languages
           </li>
         </ul>
-        <div className="flex">
-          <Link to={"/Login"}>
-            <button className="rounded-2xl w-14 hover:font-bold">
-              Login
-            </button>
-          </Link>
-        </div>
+
+        {/* Right Section - Login */}
+        <Link to="/Login">
+          <button className="bg-zinc-800 text-white px-4 py-1.5 rounded-full hover:scale-105 transition-transform duration-200">
+            Login
+          </button>
+        </Link>
       </div>
-    </div>
+    </nav>
   );
 }
 
