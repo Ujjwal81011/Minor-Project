@@ -1,8 +1,8 @@
 import React from "react";
 
-import calculator from "../assets/calculator.jpeg";
+import calculator from "../assets/Calc.jpeg";
 import password from "../assets/Password.jpeg";
-import batball from "../assets/batball.jpeg";
+import weather from "../assets/weather.jpeg";
 import flight from "../assets/flight.jpeg";
 import IOT from "../assets/IOT.jpeg";
 
@@ -29,11 +29,14 @@ import {
 
 function Project() {
   const projects = [
+    // =========================
+    // PROJECT 1
+    // =========================
     {
       img: calculator,
       title: "Simple Calculator",
       description:
-        "A clean and responsive calculator built using HTML, CSS and JavaScript.",
+        "A clean and responsive calculator built using HTML, CSS and JavaScript. It performs basic arithmetic operations with a simple and user-friendly interface.",
       skills: [
         { name: "HTML", icon: <FaHtml5 /> },
         { name: "CSS", icon: <FaCss3Alt /> },
@@ -43,11 +46,14 @@ function Project() {
         "https://github.com/Ujjwal81011/Minor-Project/blob/main/calculator.html",
     },
 
+    // =========================
+    // PROJECT 2
+    // =========================
     {
       img: password,
       title: "Password Generator",
       description:
-        "A secure password generator built with React.js and Tailwind CSS.",
+        "A secure and customizable password generator built with React.js and Tailwind CSS. Users can control password length, include numbers and special characters, and easily copy the generated password with one click.",
       skills: [
         { name: "HTML", icon: <FaHtml5 /> },
         { name: "Tailwind", icon: <SiTailwindcss /> },
@@ -55,28 +61,34 @@ function Project() {
         { name: "React", icon: <FaReact /> },
       ],
       link:
-        "https://github.com/Ujjwal81011/React.js/tree/main/05Password",
+        "https://github.com/Ujjwal81011/Minor-Project/tree/main/Password",
     },
 
+    // =========================
+    // PROJECT 3
+    // =========================
     {
-      img: batball,
-      title: "Batball Game",
+      img: weather,
+      title: "Weather Forecasting",
       description:
-        "A fun browser-based batball game created using HTML, CSS and JavaScript.",
+        "A responsive weather forecasting application built with HTML, CSS, JavaScript and React. It provides users with weather information through a clean and easy-to-use interface.",
       skills: [
         { name: "HTML", icon: <FaHtml5 /> },
         { name: "CSS", icon: <FaCss3Alt /> },
         { name: "JavaScript", icon: <FaJs /> },
+        { name: "React", icon: <FaReact /> },
       ],
-      link:
-        "https://github.com/Ujjwal81011/Minor-Project/blob/main/Batball.html",
+      link: "https://github.com/Ujjwal81011/Minor-Project/tree/main/weather",
     },
 
+    // =========================
+    // PROJECT 4
+    // =========================
     {
       img: flight,
       title: "Flight Booking Website",
       description:
-        "A full-stack flight booking website with a responsive frontend, backend APIs and MongoDB database integration.",
+        "A full-stack flight booking website with a responsive frontend, backend APIs and MongoDB database integration. The project demonstrates frontend development, server-side logic and database management.",
       skills: [
         { name: "HTML", icon: <FaHtml5 /> },
         { name: "CSS", icon: <FaCss3Alt /> },
@@ -86,14 +98,17 @@ function Project() {
         { name: "Express.js", icon: <SiExpress /> },
         { name: "Node.js", icon: <FaNodeJs /> },
       ],
-      link: "#",
+      link: "https://github.com/Ujjwal81011/Minor-Project/tree/main/Flight_Booking",
     },
 
+    // =========================
+    // PROJECT 5
+    // =========================
     {
       img: IOT,
       title: "IoT Based Anti-Theft System",
       description:
-        "An IoT-based security system using ESP8266, breadboard, ultrasonic sensor and buzzer with real-time monitoring through the Blynk IoT dashboard.",
+        "An IoT-based security system using ESP8266, ultrasonic sensor and buzzer with real-time monitoring through the Blynk IoT dashboard. The system detects unauthorized movement and provides an alert.",
       skills: [
         { name: "ESP8266", icon: <FaMicrochip /> },
         { name: "Breadboard", icon: <FaMicrochip /> },
@@ -112,12 +127,8 @@ function Project() {
     >
       <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-20">
 
-        {/* =========================
-            SECTION HEADING
-        ========================== */}
         <div className="text-center mb-8 sm:mb-10">
 
-          {/* Small Heading */}
           <div className="flex items-center justify-center gap-2 mb-2">
             <FaCode className="text-pink-400 text-lg sm:text-xl" />
 
@@ -126,23 +137,18 @@ function Project() {
             </span>
           </div>
 
-          {/* Main Heading */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
             <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-yellow-400 text-transparent bg-clip-text">
               My Projects
             </span>
           </h2>
 
-          {/* Description */}
           <p className="text-gray-400 max-w-2xl mx-auto mt-3 text-sm sm:text-base leading-6">
             Here are some of the projects I've built while learning and
             improving my web development and IoT skills.
           </p>
         </div>
 
-        {/* =========================
-            PROJECT GRID
-        ========================== */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
 
           {projects.map((project, index) => (
@@ -165,9 +171,6 @@ function Project() {
               "
             >
 
-              {/* =========================
-                  CARD
-              ========================== */}
               <div
                 className="
                   h-full
@@ -179,9 +182,6 @@ function Project() {
                 "
               >
 
-                {/* =========================
-                    IMAGE
-                ========================== */}
                 <div className="relative overflow-hidden">
 
                   <img
@@ -198,7 +198,6 @@ function Project() {
                     "
                   />
 
-                  {/* Image Overlay */}
                   <div
                     className="
                       absolute
@@ -211,7 +210,6 @@ function Project() {
                     "
                   />
 
-                  {/* Project Number */}
                   <div className="absolute top-3 left-3">
                     <span
                       className="
@@ -230,7 +228,6 @@ function Project() {
                     </span>
                   </div>
 
-                  {/* GitHub Icon */}
                   <a
                     href={project.link}
                     target="_blank"
@@ -265,9 +262,6 @@ function Project() {
                   </a>
                 </div>
 
-                {/* =========================
-                    CONTENT
-                ========================== */}
                 <div className="p-5 flex flex-col flex-grow">
 
                   {/* Title */}
@@ -287,14 +281,10 @@ function Project() {
                     {project.title}
                   </h3>
 
-                  {/* Description */}
                   <p className="text-gray-400 text-sm leading-6 mb-4">
                     {project.description}
                   </p>
 
-                  {/* =========================
-                      SKILLS
-                  ========================== */}
                   <div className="flex flex-wrap gap-2 mb-5">
 
                     {project.skills.map((skill, skillIndex) => (
@@ -328,9 +318,6 @@ function Project() {
 
                   </div>
 
-                  {/* =========================
-                      GITHUB BUTTON
-                  ========================== */}
                   <div className="mt-auto">
 
                     <a
@@ -374,9 +361,6 @@ function Project() {
 
         </div>
 
-        {/* =========================
-            BOTTOM TEXT
-        ========================== */}
         <div className="text-center mt-8">
           <p className="text-gray-500 text-sm">
             More projects coming soon...

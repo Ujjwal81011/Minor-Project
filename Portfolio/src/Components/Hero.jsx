@@ -179,8 +179,6 @@ function Hero() {
           Hello, I'm
         </p>
 
-        {/* ================= Name ================= */}
-
         <h1
           className="
             font-bold
@@ -208,8 +206,6 @@ function Hero() {
           </span>
         </h1>
 
-        {/* ================= Developer Role ================= */}
-
         <h2
           className="
             mt-3
@@ -224,8 +220,6 @@ function Hero() {
         >
           Full Stack Developer
         </h2>
-
-        {/* ================= Description ================= */}
 
         <p
           className="
@@ -247,8 +241,6 @@ function Hero() {
           web applications using modern frontend and backend technologies.
         </p>
 
-        {/* ================= Buttons ================= */}
-
         <div
           className="
             mt-7
@@ -264,7 +256,6 @@ function Hero() {
           "
         >
 
-          {/* Contact Button */}
           <a
             href="#contact"
             className="
@@ -292,7 +283,6 @@ function Hero() {
             Contact Me
           </a>
 
-          {/* Resume Button */}
           <a
             href="https://drive.google.com/file/d/1BERLlJkXeexDDv5cxb0-FvLK4P-g_QMm/view?usp=drive_link"
             target="_blank"
@@ -321,10 +311,7 @@ function Hero() {
           >
             View Resume
           </a>
-
         </div>
-
-        {/* ================= Scroll Indicator ================= */}
 
         <div className="mt-8 sm:mt-10 flex flex-col items-center">
 

@@ -143,7 +143,7 @@ function Contact() {
 
                 {/* LOCATION */}
                 <a
-                  href="https://maps.app.goo.gl/k9fLzQvBunXCCgqH7"
+                  href="https://maps.app.goo.gl/7tUPdZpJW9kZcGFv7"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-5 p-5 rounded-2xl
@@ -451,7 +451,7 @@ function Contact() {
 
               {/* GitHub */}
               <a
-                href="https://github.com/"
+                href="https://github.com/Ujjwal81011/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -470,7 +470,7 @@ function Contact() {
 
               {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/ujjwal-mishra-782634277/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
