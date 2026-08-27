@@ -10,8 +10,6 @@ function Hero() {
         overflow-hidden
         bg-[#050505]
         text-white
-        flex
-        items-center
         px-5
         sm:px-8
         md:px-10
@@ -21,10 +19,10 @@ function Hero() {
         sm:pt-28
         md:pt-24
         lg:pt-24
-        pb-12
-        sm:pb-14
-        md:pb-16
-        lg:pb-20
+        pb-10
+        sm:pb-12
+        md:pb-14
+        lg:pb-16
       "
     >
       {/* =====================================================
@@ -281,7 +279,6 @@ function Hero() {
               sm:mt-8
               flex
               flex-col
-              xs:flex-row
               sm:flex-row
               items-center
               justify-center
@@ -290,7 +287,7 @@ function Hero() {
               sm:gap-4
             "
           >
-            {/* Contact */}
+            {/* Contact Button */}
 
             <a
               href="#contact"
@@ -334,7 +331,7 @@ function Hero() {
               </span>
             </a>
 
-            {/* Resume */}
+            {/* Resume Button */}
 
             <a
               href="https://drive.google.com/file/d/1BERLlJkXeexDDv5cxb0-FvLK4P-g_QMm/view?usp=drive_link"
@@ -431,19 +428,21 @@ function Hero() {
           <div
             className="
               relative
-              w-[270px]
-              h-[315px]
+              w-[280px]
+              h-[360px]
               sm:w-[340px]
-              sm:h-[380px]
+              sm:h-[420px]
               md:w-[390px]
-              md:h-[430px]
-              lg:w-[390px]
-              lg:h-[430px]
+              md:h-[450px]
+              lg:w-[400px]
+              lg:h-[460px]
               xl:w-[430px]
-              xl:h-[470px]
+              xl:h-[490px]
             "
           >
-            {/* Outer Glow */}
+            {/* =================================================
+                OUTER GLOW
+            ================================================== */}
 
             <div
               className="
@@ -458,13 +457,16 @@ function Hero() {
               "
             />
 
-            {/* Decorative Circle */}
+            {/* =================================================
+                DECORATIVE CIRCLE
+            ================================================== */}
 
             <div
               className="
                 absolute
                 -top-5
-                -right-5
+                -right-3
+                sm:-right-5
                 w-20
                 h-20
                 sm:w-28
@@ -475,7 +477,9 @@ function Hero() {
               "
             />
 
-            {/* Main Card */}
+            {/* =================================================
+                PROFILE CARD
+            ================================================== */}
 
             <div
               className="
@@ -491,7 +495,7 @@ function Hero() {
                 overflow-hidden
               "
             >
-              {/* Gradient */}
+              {/* Top Gradient */}
 
               <div
                 className="
@@ -499,25 +503,29 @@ function Hero() {
                   top-0
                   left-0
                   right-0
-                  h-32
+                  h-36
                   bg-gradient-to-b
                   from-green-400/10
                   to-transparent
                 "
               />
 
-              {/* Profile Image */}
+              {/* =================================================
+                  PROFILE IMAGE
+              ================================================== */}
 
               <div
                 className="
                   absolute
                   top-6
+                  sm:top-7
+                  md:top-8
                   left-1/2
                   -translate-x-1/2
                   w-40
                   h-40
-                  sm:w-52
-                  sm:h-52
+                  sm:w-48
+                  sm:h-48
                   md:w-56
                   md:h-56
                   lg:w-60
@@ -546,33 +554,43 @@ function Hero() {
                 />
               </div>
 
-              {/* Card Information */}
+              {/* =================================================
+                  CARD INFORMATION
+              ================================================== */}
 
               <div
                 className="
                   absolute
-                  bottom-5
                   left-4
                   right-4
-                  sm:bottom-6
+                  bottom-5
                   sm:left-6
                   sm:right-6
+                  sm:bottom-6
                   text-center
+                  pt-4
+                  sm:pt-5
+                  md:pt-6
                 "
               >
+                {/* Name */}
+
                 <p
                   className="
                     text-lg
                     sm:text-xl
                     font-bold
+                    leading-tight
                   "
                 >
                   Ujjwal Mishra
                 </p>
 
+                {/* Role */}
+
                 <p
                   className="
-                    mt-1
+                    mt-2
                     text-xs
                     sm:text-sm
                     text-gray-400
@@ -587,6 +605,7 @@ function Hero() {
                   className="
                     mt-3
                     flex
+                    flex-wrap
                     justify-center
                     gap-1.5
                     sm:gap-2
@@ -648,13 +667,13 @@ function Hero() {
 
             {/* =================================================
                 FLOATING EXPERIENCE CARD
-            ================================================= */}
+            ================================================== */}
 
             <div
               className="
                 absolute
                 top-5
-                -left-2
+                -left-1
                 sm:top-10
                 sm:-left-6
                 px-3
@@ -693,13 +712,13 @@ function Hero() {
 
             {/* =================================================
                 FLOATING MODERN UI CARD
-            ================================================= */}
+            ================================================== */}
 
             <div
               className="
                 absolute
                 bottom-10
-                -right-2
+                -right-1
                 sm:bottom-16
                 sm:-right-5
                 px-3
@@ -742,6 +761,71 @@ function Hero() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* =====================================================
+          SCROLL INDICATOR
+
+          This is NOT absolute positioned, so it won't create
+          the huge desktop gap from the previous version.
+      ====================================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+          flex
+          flex-col
+          items-center
+          justify-center
+          mt-8
+          sm:mt-10
+          md:mt-12
+          lg:mt-8
+        "
+      >
+        <span
+          className="
+            text-[9px]
+            sm:text-[10px]
+            uppercase
+            tracking-[3px]
+            text-gray-600
+            mb-2
+          "
+        >
+          Scroll
+        </span>
+
+        <div
+          className="
+            w-5
+            h-8
+            sm:w-6
+            sm:h-9
+            rounded-full
+            border
+            border-gray-700
+            bg-white/[0.02]
+            flex
+            justify-center
+            pt-1.5
+            shadow-[0_0_15px_rgba(34,211,238,0.05)]
+          "
+        >
+          <div
+            className="
+              w-1
+              h-2
+              sm:h-2.5
+              rounded-full
+              bg-gradient-to-b
+              from-green-400
+              to-cyan-400
+              animate-bounce
+            "
+          />
         </div>
       </div>
 
