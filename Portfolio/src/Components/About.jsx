@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../assets/ujjwal.jpg";
+import image from "../assets/ujjwal.jpeg";
 
 import {
   FaHtml5,

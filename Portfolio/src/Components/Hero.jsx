@@ -1,5 +1,5 @@
 import React from "react";
-import Photo from "../assets/ujjwal.jpg";
+import Photo from "../assets/ujjwal.jpeg";
 
 function Hero() {
   return (
