@@ -661,7 +661,7 @@ export default function Card() {
           </div>
         )}
 
-        {/* ================= EMPTY STATE ================= */}
+        {/* EMPTY STATE */}
 
         {!loading && !data && !error && (
           <div className="py-10 text-center">
@@ -696,7 +696,7 @@ export default function Card() {
           </div>
         )}
 
-        {/* ================= FOOTER ================= */}
+        {/* FOOTER */}
 
         <div
           className="
@@ -735,7 +735,7 @@ export default function Card() {
   );
 }
 
-/* ================= WEATHER STAT ================= */
+/* WEATHER STAT */
 
 function WeatherStat({
   icon,
@@ -797,7 +797,7 @@ function WeatherStat({
   );
 }
 
-/* ================= BOTTOM INFO ================= */
+/* BOTTOM INFO */
 
 function Info({ title, value }) {
   return (
