@@ -334,7 +334,7 @@ function Hero() {
             {/* Resume Button */}
 
             <a
-              href="https://drive.google.com/file/d/1BERLlJkXeexDDv5cxb0-FvLK4P-g_QMm/view?usp=drive_link"
+              href="https://drive.google.com/file/d/12GOWWmZte7LF2u6ih0lMrEPehiHdQlZ9/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="
